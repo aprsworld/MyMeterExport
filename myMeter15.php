@@ -11,6 +11,7 @@ sample args
 ?tableName%5B%5D=ps2tap_A3497&tableName%5B%5D=ps2tap_A3497&colName%5B%5D=output_power&colName%5B%5D=bus_voltage&readingType%5B%5D=1&readingType%5B%5D=1&quality%5B%5D=1&quality%5B%5D=1&meterNumber%5B%5D=wind0&meterNumber%5B%5D=solar0
 
 ?tableName%5B%5D=ps2tap_A3497&tableName%5B%5D=ps2tap_A3497&tableName%5B%5D=wnc_basic_A3508_52256&tableName%5B%5D=wnc_basic_A3508_52256
+&station_id%5B%5D=A3497&station_id%5B%5D=A3497&station_id%5B%5D=A3508&station_id%5B%5D=A3508
 &colName%5B%5D=energy_produced&colName%5B%5D=output_power&colName%5B%5D=energySumNR&colName%5B%5D=powerSum
 &readingType%5B%5D=1&readingType%5B%5D=2&readingType%5B%5D=1&readingType%5B%5D=2
 &quality%5B%5D=1&quality%5B%5D=1&quality%5B%5D=1&quality%5B%5D=1
@@ -30,8 +31,6 @@ error_reporting(-1);
 //*/
 
 /*
-TODO decimal formats
-
 
 
 */
@@ -46,7 +45,23 @@ $json=false;
 if (isset($_REQUEST["json"])) $json=true;
 
 
+function auth($station_id, $db){
+	/* if not public, then we need to be authorized */
+	if ( 0==authPublic($station_id,$db) ) {
+		require $_SERVER["DOCUMENT_ROOT"] . "/auth.php";
+	}
+}
+
+
 $tableName = $_REQUEST["tableName"];
+$staion_ids=$_REQUEST["station_id"];
+
+foreach ($station_ids as $station_id) {
+	
+	auth($station_id, $db);
+
+}
+
 
 
 $colName  = $_REQUEST["colName"];
