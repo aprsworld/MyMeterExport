@@ -4,23 +4,6 @@ header("Cache-Control: no-cache");
 header("Content-Type: text/plain");
 /*
 
-sample args
-
-?tableName%5B%5D=ps2tap_A3497&tableName%5B%5D=ps2tap_A3497&colName%5B%5D=output_power&colName%5B%5D=energy_produced&readingType%5B%5D=2&readingType%5B%5D=1&quality%5B%5D=1&quality%5B%5D=1&meterNumber%5B%5D=wind0&meterNumber%5B%5D=solar0
-
-?tableName%5B%5D=ps2tap_A3497&tableName%5B%5D=ps2tap_A3497&colName%5B%5D=output_power&colName%5B%5D=bus_voltage&readingType%5B%5D=1&readingType%5B%5D=1&quality%5B%5D=1&quality%5B%5D=1&meterNumber%5B%5D=wind0&meterNumber%5B%5D=solar0
-
-?tableName%5B%5D=ps2tap_A3497&tableName%5B%5D=ps2tap_A3497&tableName%5B%5D=wnc_basic_A3508_52256&tableName%5B%5D=wnc_basic_A3508_52256
-&station_id%5B%5D=A3497&station_id%5B%5D=A3497&station_id%5B%5D=A3508&station_id%5B%5D=A3508
-&colName%5B%5D=energy_produced&colName%5B%5D=output_power&colName%5B%5D=energySumNR&colName%5B%5D=powerSum
-&readingType%5B%5D=1&readingType%5B%5D=2&readingType%5B%5D=1&readingType%5B%5D=2
-&quality%5B%5D=1&quality%5B%5D=1&quality%5B%5D=1&quality%5B%5D=1
-&meterNumber%5B%5D=wind0&meterNumber%5B%5D=wind0&meterNumber%5B%5D=solar0&meterNumber%5B%5D=solar0
-&startDate=2015-02-01
-&tzOffset=6
-
-http://ian.aprsworld.com/myMeter/myMeter15.php?tableName%5B%5D=ps2tap_A3497&tableName%5B%5D=ps2tap_A3497&tableName%5B%5D=wnc_basic_A3508_52256&tableName%5B%5D=wnc_basic_A3508_52256&colName%5B%5D=energy_produced&colName%5B%5D=output_power&colName%5B%5D=energySumNR&colName%5B%5D=powerSum&readingType%5B%5D=1&readingType%5B%5D=2&readingType%5B%5D=1&readingType%5B%5D=2&quality%5B%5D=1&quality%5B%5D=1&quality%5B%5D=1&quality%5B%5D=1&meterNumber%5B%5D=wind0&meterNumber%5B%5D=wind0&meterNumber%5B%5D=solar0&meterNumber%5B%5D=solar0
-
 
 */
 
