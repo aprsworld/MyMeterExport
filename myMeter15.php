@@ -2,21 +2,12 @@
 <?
 header("Cache-Control: no-cache");
 header("Content-Type: text/plain");
-/*
-
-
-*/
 
 /*
 ini_set('display_errors',1);
 ini_set('display_startup_errors',1);
 error_reporting(-1);
 //*/
-
-/*
-
-
-*/
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/world_config.php';
 
@@ -116,9 +107,9 @@ foreach ($r as $minuteInterval) {
 	foreach ( $minuteInterval as $key => $column ) {
 		//$date=str_replace("-","",$column["packet_date"])."<br>";
 		if ( $column["readingType"] == "1" ) {		
-			printf("%s|%s|%d|%s|%s|%s<br>",$column["meterNumber"],cleanDate($column["packet_date"]),$column["readingType"],$column["meterRead"],$column["value"],$column["quality"]);
+			printf("%s|%s|%d|%s|%s|%s\n",$column["meterNumber"],cleanDate($column["packet_date"]),$column["readingType"],$column["meterRead"],$column["value"],$column["quality"]);
 		} else {
-			printf("%s|%s|%d||%s|%s<br>",$column["meterNumber"],cleanDate($column["packet_date"]),$column["readingType"],$column["value"],$column["quality"]);
+			printf("%s|%s|%d||%s|%s\n",$column["meterNumber"],cleanDate($column["packet_date"]),$column["readingType"],$column["value"],$column["quality"]);
 		}
 	}
 }
