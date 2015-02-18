@@ -43,8 +43,13 @@ $colName  = $_REQUEST["colName"];
 $meterNumber = $_REQUEST["meterNumber"];
 $readingType = $_REQUEST["readingType"];
 $quality     = $_REQUEST["quality"];
+$scaleFactor = $_REQUEST["scaleFactor"];
 
 if ( !isset($_REQUEST["startDate"]) ) die("Error: No date specified.");
+
+$size = count($tableName);
+
+if ( count($colName) != $size ||count($meterNumber) != $size ||count($readingType) != $size ||count($quality) != $size ||count($scaleFactor) != $size ) die("Arrays are not all the same size");
 
 $startDate = $_REQUEST["startDate"]." 00:00:00";
 
@@ -83,6 +88,7 @@ for ($i = 0 ; $i < count($tableName) ; $i++ ) {
 		$x["readingType"]=$readingType[$i];
 		$x["quality"]=$quality[$i];
 		$x["meterNumber"]=$meterNumber[$i];
+		$x["scaleFactor"]=$scaleFactor[$i];
 		if ( $readingType[$i] == "1" ) {
 			$x["meterRead"]=$x["value"];
 			
@@ -94,7 +100,7 @@ for ($i = 0 ; $i < count($tableName) ; $i++ ) {
 			$last=$x["meterRead"];
 			$x["meterRead"]=round($x["meterRead"],2);
 		}
-		$x["value"]=round($x["value"],3);
+		$x["value"]=round($x["value"]*$x["scaleFactor"],3);
 		$r[$x["minuteinterval"]][$colName[$i]]=$x;
 
 	}
