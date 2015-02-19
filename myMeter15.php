@@ -52,7 +52,7 @@ $size = count($tableName);
 if ( count($colName) != $size ||count($meterNumber) != $size ||count($readingType) != $size ||count($quality) != $size ||count($scaleFactor) != $size ) die("Arrays are not all the same size");
 
 if ( !preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/",$_REQUEST["startDate"]) ) {
-	die("Error: Invalid date");
+	die("Error: Invalid date.");
 }
 
 $startDate = $_REQUEST["startDate"]." 00:00:00";
@@ -90,8 +90,11 @@ for ($i = 0 ; $i < count($tableName) ; $i++ ) {
 	//echo $sql;
 
 	$query=mysql_query($sql,$db);
-	if ( mysql_num_rows($query) == 0 ) die("No Data For This Date.");
+
+	if ( mysql_num_rows($query) == 0 ) die();
+
 	$last=false;
+
 	while($x=mysql_fetch_array($query,MYSQL_ASSOC)){
 		$x["readingType"]=$readingType[$i];
 		$x["quality"]=$quality[$i];
