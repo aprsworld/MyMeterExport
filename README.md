@@ -1,6 +1,6 @@
 # MyMeterExport
 
-There are 8 required arguments that need to be applied to myMeter15.php and 1 optional.
+There are 8 required arguments that need to be applied to myMeter15.php and 2 optional.
 
  * `tableName` - The names of the table(s) that will be queried for data. This must be in an array format.
  	
@@ -13,6 +13,7 @@ There are 8 required arguments that need to be applied to myMeter15.php and 1 op
  	- ex) startDate=2015-01-01
  * `scaleFactor` - used to scale the value if necessary, such as converting watts to kW. 
  * `tzOffset` - Optional, this allows you to apply a timezone offset to the data
+ * `contType` - Optional, this allows you to specify the content-type header. ex) "contType=text/plain"
  ###URL Array example
   `?tableName%5B%5D=exampleTable_E1234&tableName%5B%5D=exampleTable_E5678`
  

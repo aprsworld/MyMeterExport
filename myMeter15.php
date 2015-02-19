@@ -3,13 +3,7 @@
 header("Cache-Control: no-cache");
 
 if (isset($_REQUEST["contType"])) {
-	switch ($_REQUEST['contType']) {
-		case "plain": header("Content-Type: text/plain"); break;
-		case "plain": header("Content-Type: text/plain"); break;
-		case "plain": header("Content-Type: text/plain"); break;
-
-	}
-		
+	header(sprintf("Content-Type: %s",$_REQUEST["contType"]));
 }else {
 	header("Content-Type: text/plain");
 }
