@@ -2,6 +2,7 @@
 
 header("Cache-Control: no-cache");
 
+/* sets the content type */
 if (isset($_REQUEST["contType"])) {
 	header(sprintf("Content-Type: %s",$_REQUEST["contType"]));
 }else {
