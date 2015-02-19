@@ -34,6 +34,7 @@ There are 8 required arguments that need to be applied to myMeter15.php and 1 op
         AllowOverride AuthConfig Options
         RewriteEngine on
         RewriteCond %{REQUEST_FILENAME} !-d
+        RewriteRule ^(.*?)\.csv$ $1
         RewriteRule ^([^/\.]+)/?$ http://ian.aprsworld.com/myMeter/myMeter15.php?tzOff=0&startDate=$1&tableName[]=ps2tap_E1234&tableName[]=ps2tap_E1234&tableName[]=wnc_basic_E4567_52256&tableName[]=wnc_basic_E4567_52256&colName[]=energy_produced&colName[]=output_power&colName[]=energySumNR&colName[]=powerSum&readingType[]=1&readingType[]=2&readingType[]=1&readingType[]=2&quality[]=1&quality[]=1&quality[]=1&quality[]=1&meterNumber[]=wind0&meterNumber[]=wind0&meterNumber[]=solar0&meterNumber[]=solar0&scaleFactor[]=1&scaleFactor[]=.001&scaleFactor[]=1&scaleFactor[]=.001 [L]
 </Directory>
 ```
