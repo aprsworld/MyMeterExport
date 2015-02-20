@@ -135,30 +135,52 @@ for ($i = 0 ; $i < count($tableName) ; $i++ ) {
 			$x["meterRead"]=round($x["meterRead"],2);
 		}
 		$x["value"]=round($x["value"]*$x["scaleFactor"],3);
-		$r[$x["minuteinterval"]][$colName[$i]]=$x;
+		$r[intval(cleanInterval($x["minuteinterval"]))][$colName[$i]]=$x;
 
 	}
 		
 }
 
-/* */
+/* debug
+for ($i = 0 ; $i < 2400; $i++) {
+	if ( array_key_exists($i, $r) ) {
+		print_r($r[$i]);
+	}
+}
+*/
+
+/* print out the rows */
 if(!$json){
 	/* print out the rows */
-	foreach ($r as $minuteInterval) {
-		foreach ( $minuteInterval as $key => $column ) {
-			//$date=str_replace("-","",$column["packet_date"])."<br>";
-			if ( $column["readingType"] == "1" ) {		
-				printf("%s|%s|%d|%s|%s|%s\n",$column["meterNumber"],cleanDate($column["packet_date"]),$column["readingType"],$column["meterRead"],$column["value"],$column["quality"]);
-			} else {
-				/* for reading types that don't equal 1, we just print out the value and have the meterRead blank */				
-				printf("%s|%s|%d||%s|%s\n",$column["meterNumber"],cleanDate($column["packet_date"]),$column["readingType"],$column["value"],$column["quality"]);
+	for ($i = 0 ; $i < 2400; $i++) {
+		if ( array_key_exists($i, $r) ) {
+			foreach ( $r[$i] as $key => $column ) {
+			
+				//$date=str_replace("-","",$column["packet_date"])."<br>";
+				if ( $column["readingType"] == "1" ) {		
+					printf("%s|%s|%d|%s|%s|%s\n",$column["meterNumber"],cleanDate($column["packet_date"],$column["minuteinterval"]),$column["readingType"],$column["meterRead"],$column["value"],$column["quality"]);
+				} else {
+					/* for reading types that don't equal 1, we just print out the value and have the meterRead blank */				
+					printf("%s|%s|%d||%s|%s\n",$column["meterNumber"],cleanDate($column["packet_date"],$column["minuteinterval"]),$column["readingType"],$column["value"],$column["quality"]);
+				}
 			}
 		}
 	}
 }
 
 /* removes spaces, dashes and colons from the date */
-function cleanDate($date){
+function cleanDate($date, $minInt){
+	$date=str_replace("-","",$date);
+	$date=str_replace(" ","",$date);
+	$date=str_replace(":","",$date);
+	$minInt=str_replace("-","",$minInt);
+	$minInt=str_replace(" ","",$minInt);
+	$minInt=str_replace(":","",$minInt);
+	return substr($date,0,-6).substr($minInt,0,-2);
+}
+
+/* removes spaces, dashes and colons from the date */
+function cleanInterval($date) {
 	$date=str_replace("-","",$date);
 	$date=str_replace(" ","",$date);
 	$date=str_replace(":","",$date);
